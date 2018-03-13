@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
