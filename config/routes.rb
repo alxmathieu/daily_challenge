@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :challenges, only: [:show, :index]
-  resources :commitments, only: [:create, :update]
+  resources :commitments, only: [:index, :create, :update]
   resources :users, only: [:show]
 
 

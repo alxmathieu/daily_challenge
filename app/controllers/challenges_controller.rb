@@ -1,7 +1,9 @@
 class ChallengesController < ApplicationController
 
   def show
-    @todays_challenge = Challenge.find(params[:id])
+    @challenge = Challenge.find(params[:id])
+    @commitment = Commitment.new
+    @random_challenge = Challenge.all.sample
   end
 
 end

@@ -1,6 +1,24 @@
-<h1 style="text-align: center">Today's Challenge</h1>
 
-<h2><%= @todays_challenge.title %></h2>
+<div class="container">
+<h1 style="text-align: center">Pick a challenge for today!</h1>
 
-<p><%= @todays_challenge.description %></p>
+
+  <h2><%= @challenge.title %></h2>
+  <p><%= @challenge.description %></p>
+
+  <%= simple_form_for(@commitment)  do |f| -%>
+    <%= f.input :challenge_id, :input_html => { :value => "#{@challenge.id}"}, as: :hidden %>
+    <%= f.input :user_id, :input_html => { :value => "#{current_user.id}"}, as: :hidden %>
+    <%= f.button :submit, "I'm up for it!", class:"btn btn-primary"%>
+  <% end -%>
+
+  <%= link_to "Show me something else", challenge_path(@random_challenge), class: "btn btn-danger btn-sm" %>
+
+</div>
+
+
+
+
+
+
 
