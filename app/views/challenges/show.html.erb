@@ -5,14 +5,19 @@
 
   <h2><%= @challenge.title %></h2>
   <p><%= @challenge.description %></p>
+  <% unless @seen_challenges.include?(@challenge) %>
+    <%= simple_form_for(@commitment)  do |f| -%>
+      <%= f.input :challenge_id, :input_html => { :value => "#{@challenge.id}"}, as: :hidden %>
+      <%= f.input :user_id, :input_html => { :value => "#{current_user.id}"}, as: :hidden %>
+      <%= f.button :submit, "I'm up for it!", class:"btn btn-primary"%>
+    <% end -%>
+  <% end %>
 
-  <%= simple_form_for(@commitment)  do |f| -%>
-    <%= f.input :challenge_id, :input_html => { :value => "#{@challenge.id}"}, as: :hidden %>
-    <%= f.input :user_id, :input_html => { :value => "#{current_user.id}"}, as: :hidden %>
-    <%= f.button :submit, "I'm up for it!", class:"btn btn-primary"%>
-  <% end -%>
-
-  <%= link_to "Show me something else", challenge_path(@random_challenge), class: "btn btn-danger btn-sm" %>
+  <% if @unseen_challenges.include?(@challenge) %>
+    <%= link_to "Show me something else", challenge_path(@random_challenge), class: "btn btn-danger btn-sm" %>
+  <% else %>
+    <%= link_to "That's already planned!", challenge_path(@random_challenge), class: "btn btn-info btn-sm" %>
+  <% end %>
 
 </div>
 

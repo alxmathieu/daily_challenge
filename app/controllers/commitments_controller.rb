@@ -5,6 +5,7 @@ class CommitmentsController < ApplicationController
     @accepted_commitments = Commitment.where(user_id: current_user.id, status: "accepted")
     @abandonned_commitments = Commitment.where(user_id: current_user.id, status: "abandonned")
     @done_commitments = Commitment.where(user_id: current_user.id, status: "done")
+    @random_challenge = Challenge.all.sample
   end
 
   def create
