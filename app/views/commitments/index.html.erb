@@ -1,20 +1,49 @@
 <div class="container">
-  <h1>These are all your commitments</h1>
-
+  <h1 style= "text-align: center;">These are all your commitments</h1>
   <div class="row">
-      <% @commitments.each do |commitment| %>
+    <% @accepted_commitments.each do |commitment| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 ">
+        <div class="card">
+          <!-- <div class="card-category">Popular</div> -->
+          <div class="card-description">
+            <h2><%= commitment.challenge.title %></h2>
+            <p><%= commitment.challenge.description %></p>
+            <%= simple_form_for(commitment, method: "patch") do |f| %>
+              <%= f.input :status, input_html: {value: "abandonned"}, as: :hidden%>
+              <%= f.input :id, value: commitment.id, as: :hidden %>
+              <%= button_tag type: 'submit', class: "submit-icon", data: { toggle: 'tooltip', placement: 'bottom', title: 'Abandonned'} do %>
+                <i class="fa fa-times"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <h1 style= "text-align: center;">This is everything you gave up on</h1>
+    <div class="row">
+      <% @abandonned_commitments.each do |commitment| %>
         <div class="col-xs-12 col-sm-6 col-md-4 ">
           <div class="card">
             <!-- <div class="card-category">Popular</div> -->
             <div class="card-description">
               <h2><%= commitment.challenge.title %></h2>
               <p><%= commitment.challenge.description %></p>
+              <%= simple_form_for(commitment, method: "patch") do |f| %>
+                <%= f.input :status, input_html: {value: "accepted"}, as: :hidden%>
+                <%= f.input :id, value: commitment.id, as: :hidden %>
+                <%= button_tag type: 'submit', class: "submit-icon", data: { toggle: 'tooltip', placement: 'bottom', title: 'try again!'} do %>
+                  <i class="fa fa-check"></i>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
       <% end %>
-  </div>
-
+    </div>
 
 
 </div>
+
+

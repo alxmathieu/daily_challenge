@@ -2,7 +2,8 @@ class CommitmentsController < ApplicationController
 
   def index
     @challenge = Challenge.all.sample
-    @commitments = Commitment.where("user_id = #{current_user.id}")
+    @accepted_commitments = Commitment.where(user_id: current_user.id, status: "accepted")
+    @abandonned_commitments = Commitment.where(user_id: current_user.id, status: "abandonned")
 
   end
 
@@ -13,10 +14,18 @@ class CommitmentsController < ApplicationController
     end
   end
 
+  def update
+    @commitment = Commitment.find(commitment_params[:id])
+    @commitment.status = commitment_params[:status]
+    if @commitment.save
+      redirect_to commitments_path
+    end
+  end
+
   private
 
   def commitment_params
-    params.require(:commitment).permit(:user_id, :challenge_id)
+    params.require(:commitment).permit(:user_id, :challenge_id, :status, :id)
   end
 
 end
