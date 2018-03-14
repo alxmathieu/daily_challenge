@@ -10,8 +10,8 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Today's Challenge", challenge_path(@todays_challenge), class: "btn btn-primary btn-sm" %>
-      <%= link_to "My Commitments", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Pick a Challenge", challenge_path(@challenge), class: "btn btn-primary btn-sm" %>
+      <%= link_to "My Commitments", commitments_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "My Accomplishments", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
@@ -50,10 +50,10 @@
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to "Today's Challenge", challenge_path(@todays_challenge)%>
+            <%= link_to "Pick a Challenge", challenge_path(@challenge)%>
           </li>
           <li>
-            <%= link_to "My Commitments", "#" %>
+            <%= link_to "My Commitments", commitments_path %>
           </li>
           <li>
             <%= link_to "My Accomplishments", "#" %>

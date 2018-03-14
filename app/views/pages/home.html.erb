@@ -2,7 +2,7 @@
   <div class="banner-content">
     <h1>Daily Challenges</h1>
     <p>Get some thrills in your life!</p>
-    <%= link_to "Start now", challenge_path(@todays_challenge), class: "btn btn-primary btn-lg" %>
+    <%= link_to "Start now", challenge_path(@challenge), class: "btn btn-primary btn-lg" %>
   </div>
 </div>
 <div class="container">
@@ -13,7 +13,7 @@
       <% @homepage_challenges.each do |challenge| %>
         <div class="col-xs-12 col-sm-6 col-md-4 ">
           <div class="card">
-            <div class="card-category">Popular</div>
+            <!-- <div class="card-category">Popular</div> -->
             <div class="card-description">
               <h2><%= challenge.title %></h2>
               <p><%= challenge.description %></p>

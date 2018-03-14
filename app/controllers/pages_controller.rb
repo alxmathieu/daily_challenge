@@ -9,8 +9,7 @@ class PagesController < ApplicationController
       @homepage_challenges << Challenge.all.sample
     end
 
-    @todays_challenge = Challenge.all.sample
-
+    @challenge = Challenge.all.sample
 
   end
 end

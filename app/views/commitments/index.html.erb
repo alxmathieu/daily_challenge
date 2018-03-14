@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>These are all your commitments</h1>
+
+  <div class="row">
+      <% @commitments.each do |commitment| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 ">
+          <div class="card">
+            <!-- <div class="card-category">Popular</div> -->
+            <div class="card-description">
+              <h2><%= commitment.challenge.title %></h2>
+              <p><%= commitment.challenge.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+
+
+
+</div>
