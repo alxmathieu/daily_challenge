@@ -9,11 +9,10 @@
   <%= simple_form_for(@commitment)  do |f| -%>
     <%= f.input :challenge_id, :input_html => { :value => "#{@challenge.id}"}, as: :hidden %>
     <%= f.input :user_id, :input_html => { :value => "#{current_user.id}"}, as: :hidden %>
-    <%= f.button :submit, "I'm up for it!", class:"btn btn-eucalyptus"%>
+    <%= f.button :submit, "I'm up for it!", class:"btn btn-primary"%>
   <% end -%>
 
-<!-- NEED RANDOMIZED challenge -->
-  <%#= link_to "Show me something else", challenge_path(@challenge), class: "btn btn-primary btn-lg" %>
+  <%= link_to "Show me something else", challenge_path(@random_challenge), class: "btn btn-danger btn-sm" %>
 
 </div>
 
