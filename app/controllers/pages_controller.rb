@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       @homepage_challenges << Challenge.all.sample
     end
 
-    @challenge = Challenge.all.sample
+    @random_challenge = Challenge.all.sample
 
   end
 end
