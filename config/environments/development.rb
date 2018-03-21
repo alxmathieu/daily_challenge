@@ -1,5 +1,21 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://localhost:3000" }
+
+
+  # DEVISE
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+     user_name:      ENV['SENDMAIL_USERNAME'],
+     password:       ENV['SENDMAIL_PASSWORD'],
+     domain:         ENV['MAIL_HOST'],
+     address:       'smtp.gmail.com',
+     port:          '587',
+     authentication: :plain,
+     enable_starttls_auto: true
+   }
+
+
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = true
 
@@ -31,7 +47,8 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # updating to true for devise confirmable
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
