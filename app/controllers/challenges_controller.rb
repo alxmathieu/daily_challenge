@@ -1,5 +1,4 @@
 class ChallengesController < ApplicationController
-
   def show
     @challenge = Challenge.find(params[:id])
     @commitment = Commitment.new
@@ -13,7 +12,7 @@ class ChallengesController < ApplicationController
     # check if a challenge is accepted
     @unseen_challenges = []
     Challenge.all.each do |challenge|
-    # if not, add it to unseen_challenge
+      # if not, add it to unseen_challenge
       @unseen_challenges << challenge unless @seen_challenges.include?(challenge)
     end
     # if a user has seen all challenges, pick a random one
@@ -23,5 +22,4 @@ class ChallengesController < ApplicationController
       @random_challenge = @unseen_challenges.sample
     end
   end
-
 end

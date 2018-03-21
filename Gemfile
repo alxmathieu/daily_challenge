@@ -4,6 +4,7 @@ ruby '2.4.3'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
+gem 'rubocop', '~> 0.54.0', require: false
 
 gem 'devise'
 gem 'figaro'
