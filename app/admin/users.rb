@@ -17,6 +17,7 @@ ActiveAdmin.register User do
     column :id
     column :email
     column :created_at
+    column :confirmed?
     column :admin
     actions
   end
